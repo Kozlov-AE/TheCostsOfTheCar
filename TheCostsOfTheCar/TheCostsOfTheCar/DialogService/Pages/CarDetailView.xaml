@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TheCostsOfTheCar.DialogService.Pages.CarDetailView">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Label Text="Дата покупки"/>
+            <DatePicker Date="{Binding Car.BuyDate, Mode=TwoWay}"/>
+            <Label Text="Наименование"/>
+            <Entry Text="{Binding Car.Title, Mode=TwoWay}" Placeholder="Наименование"/>
+            <Label Text="Цена покупки"/>
+            <Entry Text="{Binding Car.BuyPrice, Mode=TwoWay}" Placeholder="Цена покупки"/>
+            <Label Text="Километраж на момент покупки"/>
+            <Entry Text="{Binding Car.BuyMileage, Mode=TwoWay}" Placeholder="Километраж на момент покупки"/>
+            <Label Text="Текущий километраж" IsVisible="{Binding IsCreate}"/>
+            <Entry Text="{Binding Car.CurrentMileage, Mode=OneWay}" Placeholder="Текущий километраж" IsVisible="{Binding IsCreate}"/>
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="OkBtn" Text="Ок" Clicked="OkBtn_Clicked"/>
+                <Button x:Name="BackBtn" Text="Назад" Clicked="BackBtn_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

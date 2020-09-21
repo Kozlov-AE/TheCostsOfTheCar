@@ -144,10 +144,14 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.1141" />
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.9"/>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.9" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ViewModel\ViewModel.csproj">
+      <Project>{3e42c733-f9f6-426d-9620-f636e3424efe}</Project>
+      <Name>ViewModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TheCostsOfTheCar\TheCostsOfTheCar.csproj">
       <Project>{09CEF3C2-E04F-44A2-96EF-9614B68D5D16}</Project>
       <Name>TheCostsOfTheCar</Name>

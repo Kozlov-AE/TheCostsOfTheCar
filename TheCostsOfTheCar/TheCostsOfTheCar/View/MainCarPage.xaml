@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TheCostsOfTheCar.View.MainCarPage"
+             xmlns:pages="clr-namespace:TheCostsOfTheCar.View">
+  <MasterDetailPage.Master>
+    <pages:MainCarPageMaster x:Name="MasterPage" />
+  </MasterDetailPage.Master>
+  <MasterDetailPage.Detail>
+    <NavigationPage>
+      <x:Arguments>
+        <pages:MainCarPageDetail />
+      </x:Arguments>
+    </NavigationPage>
+  </MasterDetailPage.Detail>
+</MasterDetailPage>

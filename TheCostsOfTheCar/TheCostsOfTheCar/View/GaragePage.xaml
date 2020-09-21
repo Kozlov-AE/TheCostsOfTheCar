@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pagesvm ="clr-namespace:ViewModel.PageViewModels;assembly=ViewModel"
+             xmlns:modelsvm="clr-namespace:ViewModel.ViewModels;assembly=ViewModel"
+             xmlns:dataDesign="clr-namespace:ViewModel.DesignData;assembly=ViewModel"
+             x:Class="TheCostsOfTheCar.View.GaragePage">
+    <!--<ContentPage.BindingContext>
+        <dataDesign:GarageVMDD/>
+    </ContentPage.BindingContext>-->
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+            <ListView x:Name="CarsList"
+                ItemsSource="{Binding Cars}"
+                SelectedItem="{Binding SelectedCar, Mode=TwoWay}"
+                HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Id}"/>
+                                        <Label Text="{Binding Title}"/>
+                                    </StackLayout>
+                                    <Label Text="{Binding BuyDate}"/>
+                                    <Label Text="{Binding BuyPrice}"/>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Orientation="Horizontal" 
+                         VerticalOptions="EndAndExpand" 
+                         HorizontalOptions="CenterAndExpand">
+                <Button Text="Добавить" Command="{Binding CreateNewCarCommand}"/>
+                <Button Text="Удалить" Command="{Binding RemoveCarCommand}"/>
+                <Button Text="Редактировать" Command="{Binding ChangeCarCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
