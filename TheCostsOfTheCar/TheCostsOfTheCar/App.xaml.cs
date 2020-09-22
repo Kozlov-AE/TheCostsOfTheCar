@@ -23,7 +23,11 @@ namespace TheCostsOfTheCar
                     dbName);
             GaragePage p = new GaragePage();
             MainPage = new NavigationPage(p);
-            MainPage.BindingContext = new GarageVM(new GarageFacade(dbPath, new DialogService.DialogService(MainPage.Navigation)));
+            MainPage.BindingContext = new GarageVM(
+                new GarageFacade(
+                    dbPath, 
+                    new DialogService.DialogService(MainPage.Navigation),
+                    new NavigationAppService(MainPage.Navigation)));
         }
 
         protected override void OnStart()

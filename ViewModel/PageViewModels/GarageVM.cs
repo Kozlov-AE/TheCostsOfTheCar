@@ -44,7 +44,7 @@ namespace ViewModel.PageViewModels
             (_ChangeCarCommand = new RelayCommand(() => ChangeCar()));
 
         public ICommand RemoveCarCommand => _RemoveCarCommand ??
-            (_RemoveCarCommand = new RelayCommand(() => CreateNewCar()));
+            (_RemoveCarCommand = new RelayCommand(() => RemoveSelectedCar()));
 
         public ICommand ShowCarDetailCommand => _ShowCarDetailCommand ??
             (_ShowCarDetailCommand = new RelayCommand(() => ShowCarDetail(SelectedCar.Id)));

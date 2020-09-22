@@ -37,6 +37,7 @@
                 <Button Text="Добавить" Command="{Binding CreateNewCarCommand}"/>
                 <Button Text="Удалить" Command="{Binding RemoveCarCommand}"/>
                 <Button Text="Редактировать" Command="{Binding ChangeCarCommand}"/>
+                <Button Text="Открыть" Command="{Binding ShowCarDetailCommand}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

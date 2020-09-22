@@ -41,7 +41,7 @@ namespace TheCostsOfTheCar.DialogService
             });
             await Navigation.PushModalAsync(page);
             var c = await tcs.Task;
-            Navigation.PopModalAsync();
+            await Navigation.PopModalAsync();
             return c;
         }
     }

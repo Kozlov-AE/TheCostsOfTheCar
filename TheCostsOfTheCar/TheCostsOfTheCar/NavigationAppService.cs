@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using TheCostsOfTheCar.View;
 using Xamarin.Forms;
+using ViewModel.PageViewModels;
 
 namespace TheCostsOfTheCar
 {
@@ -18,7 +20,10 @@ namespace TheCostsOfTheCar
 
         public async Task GoToMainCarPage(int carId)
         {
-            throw new NotImplementedException();
+            MainCarPageVM vm = new MainCarPageVM(carId);
+            Page page = new MainCarPage();
+            page.BindingContext = vm;
+            await nav.PushAsync(page);
         }
     }
 }

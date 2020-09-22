@@ -1,4 +1,5 @@
-﻿using Common.DTO.Classes;
+﻿using Common;
+using Common.DTO.Classes;
 using Common.DTO.Interfaces;
 using Common.RepositoryInterfaces;
 using SQLiteRepository.Repositories;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,10 +26,11 @@ namespace ViewModel.Facades
         IDialogService dialogService;
         INavigationAppService navService;
 
-        public GarageFacade(string dbPath, IDialogService dialogService)
+        public GarageFacade(string dbPath, IDialogService dialogService, INavigationAppService nav)
         {
             this.dbPath = dbPath;
             this.dialogService = dialogService;
+            navService = nav;
         }
 
         public async Task<ICarVM> CreateNewCar()
@@ -58,7 +61,7 @@ namespace ViewModel.Facades
 
         public async Task GoToMainPage(int id)
         {
-
+            await navService.GoToMainCarPage(id);
         }
 
         public async Task<List<ICarDTO>> GetCarList()
