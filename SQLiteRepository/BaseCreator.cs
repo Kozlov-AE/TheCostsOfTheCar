@@ -15,7 +15,7 @@ namespace SQLiteRepository
             var connection = new SQLiteAsyncConnection(path);
             await connection.CreateTableAsync<Car>().ConfigureAwait(false);
             await connection.CreateTableAsync<Mileage>().ConfigureAwait(false);
-            await connection.CloseAsync();
+            await connection.CloseAsync().ConfigureAwait(false);
         }
     }
 }
