@@ -2,15 +2,17 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TheCostsOfTheCar.View.MainCarPage"
-             xmlns:pages="clr-namespace:TheCostsOfTheCar.View">
-  <MasterDetailPage.Master>
-    <pages:MainCarPageMaster x:Name="MasterPage" />
-  </MasterDetailPage.Master>
-  <MasterDetailPage.Detail>
-    <NavigationPage>
-      <x:Arguments>
-        <pages:MainCarPageDetail />
-      </x:Arguments>
-    </NavigationPage>
-  </MasterDetailPage.Detail>
+             Title="Обзор автомобиля">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu" BackgroundColor="OliveDrab">
+            <ContentPage.Content>
+                <StackLayout Padding="5,10">
+                    <Button Text="Инфо"/>
+                    <Button Text="Затраты"/>
+                    <Button Text="Отчеты"/>
+                </StackLayout>    
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    
 </MasterDetailPage>

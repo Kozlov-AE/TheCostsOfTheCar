@@ -10,12 +10,12 @@ namespace SQLiteRepository
     {
         /// <summary>начальная инициализация БД </summary>
         /// <param name="path">Путь к БД</param>
-        public static async void CreateDB(string path)
+        public static void CreateDB(string path)
         {
-            var connection = new SQLiteAsyncConnection(path);
-            await connection.CreateTableAsync<Car>().ConfigureAwait(false);
-            await connection.CreateTableAsync<Mileage>().ConfigureAwait(false);
-            await connection.CloseAsync().ConfigureAwait(false);
+            var connection = new SQLiteConnection(path);
+            connection.CreateTable<Car>();
+            connection.CreateTable<Mileage>();
+            connection.Close();
         }
     }
 }

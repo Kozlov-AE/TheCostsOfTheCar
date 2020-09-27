@@ -10,12 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace TheCostsOfTheCar.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainCarPage : MasterDetailPage
+    public partial class CarInfoPage : ContentPage
     {
-        public MainCarPage()
+        public CarInfoPage()
         {
             InitializeComponent();
-            Detail = new NavigationPage(new CarInfoPage());
         }
     }
 }

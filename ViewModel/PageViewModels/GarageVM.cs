@@ -62,7 +62,9 @@ namespace ViewModel.PageViewModels
 
         async Task CreateNewCar()
         {
-            Cars.Add((ICarVM)await GarageFacade.CreateNewCar());
+            var newCar = (ICarVM)await GarageFacade.CreateNewCar();
+            if (newCar != null)
+                Cars.Add(newCar);
         }
 
         async Task ChangeCar()

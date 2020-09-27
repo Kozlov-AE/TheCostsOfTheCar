@@ -14,6 +14,6 @@ namespace ViewModel.Facades
         Task<ICarVM> CreateNewCar();
         Task<ICarVM> ChangeCar(ICarVM car);
         Task GoToMainPage(int id);
-        void RemoveCar(int carId);
+        Task RemoveCar(int carId);
     }
 }

@@ -17,7 +17,7 @@ namespace Common.RepositoryInterfaces
         /// <summary>Обновить экземпляр в репозитории. Если такого нет, то добавится новый</summary>
         Task<TDTO> UpdateAsync(TDTO dto);
         /// <summary>Удалить экземпляр из репозитория, зная его id</summary>
-        void RemoveAsync(int id);
+        Task RemoveAsync(int id);
         /// <summary>Проверить есть ли в репозитории элементы</summary>
         Task<bool> Any();
 

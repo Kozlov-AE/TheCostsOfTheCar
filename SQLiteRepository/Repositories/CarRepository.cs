@@ -63,7 +63,7 @@ namespace SQLiteRepository.Repositories
             return CarMapper.Map(await context.GetAsync<Car>(id).ConfigureAwait(false));
         }
 
-        public async void RemoveAsync(int id)
+        public async Task RemoveAsync(int id)
         {
             await context.QueryAsync<Mileage>("delete from Mileages where CarId = ?", id).ConfigureAwait(false);
             await context.DeleteAsync<Car>(id).ConfigureAwait(false);

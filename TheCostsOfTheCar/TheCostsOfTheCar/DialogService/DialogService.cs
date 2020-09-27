@@ -24,25 +24,33 @@ namespace TheCostsOfTheCar.DialogService
 
         public async Task<ICarVM> AddNewCarDialog()
         {
-            return await GetObjectFromDialogPage<ICarVM>("NewCarMessage", new CarDetailView(null));
+            var result = await GetObjectFromDialogPage<ICarVM>("NewCarMessage", new CarDetailView(null));
+            return result;
         }
 
         public async Task<ICarVM> ChangeCar(ICarVM car)
         {
-            return await GetObjectFromDialogPage<ICarVM>("ChangeCarMessage", new CarDetailView(car));
+            var result = await GetObjectFromDialogPage<ICarVM>("ChangeCarMessage", new CarDetailView(car));
+            return result;
         }
 
+        /// <summary>Возвращает объект из модального окна</summary>
+        /// <typeparam name="T">Тип объекта</typeparam>
+        /// <param name="message">Сообщение из диалога</param>
+        /// <param name="page">Страница диалого</param>
+        /// <returns><see langword="null"/> Если нажата отмена или совершена ошибка заполнения формы</returns>
         async Task<T> GetObjectFromDialogPage<T>(string message, Page page) where T: class
         {
+            T result;
             TaskCompletionSource<T> tcs = new TaskCompletionSource<T>();
             MessagingCenter.Subscribe<T>(this, message, (value) =>
             {
                 tcs.TrySetResult(value);
             });
             await Navigation.PushModalAsync(page);
-            var c = await tcs.Task;
+            result = await tcs.Task;
             await Navigation.PopModalAsync();
-            return c;
+            return result;
         }
     }
 }

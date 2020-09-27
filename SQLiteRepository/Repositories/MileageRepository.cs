@@ -52,11 +52,6 @@ namespace SQLiteRepository.Repositories
             return MileageMapper.Map(await context.Table<Mileage>().Where(m => m.CarId == carid && m.Type == type).ToListAsync());
         }
 
-        public override void RemoveAsync(int id)
-        {
-            //context.DeleteAsync<Mileage>(id);
-        }
-
         public override async Task<IMileageDTO> UpdateAsync(IMileageDTO dto)
         {
             if(dto.Id == 0 && dto.CarId != 0)

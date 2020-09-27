@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vmdd="clr-namespace:ViewModel.DesignData;assembly=ViewModel"
+             x:Class="TheCostsOfTheCar.View.CarInfoPage"
+             Title="Инфо">
+    <ContentPage.BindingContext>
+        <vmdd:CarInfoVMDD/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Car.Title}"/>
+            <Label Text="Дата покупки"/>
+            <Label Text="{Binding Car.BuyDate}"/>
+            <Label Text="Цена покупки"/>
+            <Label Text="{Binding Car.BuyPrice}"/>
+            <Label Text="Одометр на момент покупки"/>
+            <Label Text="{Binding Car.BuyMileage}"/>
+            <Label Text="Текущие показания одометра"/>
+            <Label Text="{Binding Car.CurrentMileage}"/>
+            <Label Text="Стоимость одного километра пути"/>
+            <Label Text="{Binding AMilePrice}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

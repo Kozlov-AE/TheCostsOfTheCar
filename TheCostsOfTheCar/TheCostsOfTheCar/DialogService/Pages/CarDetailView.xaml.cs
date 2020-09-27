@@ -46,25 +46,44 @@ namespace TheCostsOfTheCar.DialogService.Pages
         public bool IsChange { get; set; } = false;
         public bool IsCreate { get; set; } = false;
 
-        private async void BackBtn_Clicked(object sender, EventArgs e)
+        private void BackBtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopModalAsync();
+            ClosePage();
         }
 
-        private async void OkBtn_Clicked(object sender, EventArgs e)
+        private void OkBtn_Clicked(object sender, EventArgs e)
         {
             if (IsCreate)
             {
-                MessagingCenter.Send<ICarVM>(Car.Copy(), "NewCarMessage");
+                if (!string.IsNullOrWhiteSpace(Car.Title))
+                {
+                    MessagingCenter.Send<ICarVM>(Car.Copy(), "NewCarMessage");
+                }
+                else
+                {
+                    ClosePage();
+                }
             }
             if (IsChange)
             {
                 if (Car != oldCar)
                 {
-                    MessagingCenter.Send<ICarVM>(Car.Copy(), "ChangeCarMessage");
+                    if (!string.IsNullOrWhiteSpace(Car.Title))
+                    {
+                        MessagingCenter.Send<ICarVM>(Car.Copy(), "ChangeCarMessage");
+                    }
+                    else
+                        ClosePage();
                 }
+                else
+                    ClosePage();
             }
-            //await Navigation.PopModalAsync();
+        }
+
+        private void ClosePage()
+        {
+            MessagingCenter.Unsubscribe<ICarVM>(Car, "NewCarMessage");
+            Navigation.PopModalAsync();
         }
     }
 }

@@ -2,6 +2,7 @@
 using Common.DTO.Classes;
 using Common.DTO.Interfaces;
 using Common.RepositoryInterfaces;
+using SQLiteRepository;
 using SQLiteRepository.Repositories;
 using System;
 using System.Collections.Generic;
@@ -36,10 +37,13 @@ namespace ViewModel.Facades
         public async Task<ICarVM> CreateNewCar()
         {
             var newcar = await dialogService.AddNewCarDialog();
-            using (IUnitOfWork uow = new UnitOfWork(dbPath))
+            if (newcar != null)
             {
-                var cardto = await uow.CarRepository.AddAsync(CarMapper.Map(newcar));
-                newcar = CarMapper.Map(cardto);
+                using (IUnitOfWork uow = new UnitOfWork(dbPath))
+                {
+                    var cardto = await uow.CarRepository.AddAsync(CarMapper.Map(newcar));
+                    newcar = CarMapper.Map(cardto);
+                }
             }
             return newcar;
         }
@@ -47,16 +51,18 @@ namespace ViewModel.Facades
         public async Task<ICarVM> ChangeCar(ICarVM car)
         {
             var changedcar = await dialogService.ChangeCar(car);
-            if (changedcar != car)
+            if (changedcar != null)
             {
-                using (IUnitOfWork uow = new UnitOfWork(dbPath))
+                if (changedcar != car)
                 {
-                    var cCar = await uow.CarRepository.UpdateAsync(CarMapper.Map(changedcar));
-                    changedcar = CarMapper.Map(cCar);
+                    using (IUnitOfWork uow = new UnitOfWork(dbPath))
+                    {
+                        var cCar = await uow.CarRepository.UpdateAsync(CarMapper.Map(changedcar));
+                        changedcar = CarMapper.Map(cCar);
+                    }
                 }
-                return changedcar;
             }
-            else return null;
+            return changedcar;
         }
 
         public async Task GoToMainPage(int id)
@@ -73,11 +79,11 @@ namespace ViewModel.Facades
             }
         }
 
-        public void RemoveCar(int carId)
+        public async Task RemoveCar(int carId)
         {
             using (IUnitOfWork uow = new UnitOfWork(dbPath))
             {
-                uow.CarRepository.RemoveAsync (carId);
+                await uow.CarRepository.RemoveAsync (carId);
             }
         }
     }

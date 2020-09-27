@@ -19,13 +19,13 @@ namespace SQLiteRepository.Repositories
 
         public abstract Task<TDTO> AddAsync(TDTO dto);
 
-        public async Task<bool> Any() => (await context.Table<TEntity>().CountAsync()) > 0;
+        public virtual async Task<bool> Any() => (await context.Table<TEntity>().CountAsync()) > 0;
 
         public abstract Task<ICollection<TDTO>> GetAllAsync();
 
         public abstract Task<TDTO> GetByIdAsync(int id);
 
-        public abstract void RemoveAsync(int id);
+        public virtual async Task RemoveAsync(int id) => await context.DeleteAsync<TEntity>(id);
 
         public abstract Task<TDTO> UpdateAsync(TDTO dto);
     }

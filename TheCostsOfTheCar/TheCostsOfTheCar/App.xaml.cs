@@ -18,23 +18,21 @@ namespace TheCostsOfTheCar
         {
             InitializeComponent();
 
-            dbPath = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                    dbName);
             GaragePage p = new GaragePage();
             MainPage = new NavigationPage(p);
+        }
+
+        protected override void OnStart()
+        {
+            this.dbPath = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            dbName);
+            BaseCreator.CreateDB(dbPath);
             MainPage.BindingContext = new GarageVM(
                 new GarageFacade(
                     dbPath, 
                     new DialogService.DialogService(MainPage.Navigation),
                     new NavigationAppService(MainPage.Navigation)));
-        }
-
-        protected override void OnStart()
-        {
-            BaseCreator.CreateDB (Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                    dbName));
         }
 
         protected override void OnSleep()
