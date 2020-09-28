@@ -15,6 +15,5 @@ namespace ViewModel.Facades
         Task<ICarVM> ChangeCar(ICarVM car);
         Task GoToMainPage(int id);
         Task RemoveCar(int carId);
-
     }
 }
