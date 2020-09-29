@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Common.Facade
 {
-    interface ICarFacade
+    public interface ICarFacade
     {
         Task<List<ICarDTO>> GetCarList();
         Task<ICarDTO> CreateNewCar();
