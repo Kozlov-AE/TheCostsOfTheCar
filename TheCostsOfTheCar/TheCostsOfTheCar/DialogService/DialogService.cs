@@ -15,7 +15,7 @@ namespace TheCostsOfTheCar.DialogService
 {
     public class DialogService  : IDialogService
     {
-        public INavigation Navigation { get; set; }
+        INavigation Navigation { get; set; }
 
         public DialogService(INavigation nav)
         {

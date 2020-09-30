@@ -24,10 +24,10 @@ namespace ViewModel.Facades
     public class GarageFacade : IGarageFacade
     {
         string dbPath;
-        IDialogService dialogService;
+        Common.IDialogService dialogService;
         INavigationAppService navService;
 
-        public GarageFacade(string dbPath, IDialogService dialogService, INavigationAppService nav)
+        public GarageFacade(string dbPath, Common.IDialogService dialogService, INavigationAppService nav)
         {
             this.dbPath = dbPath;
             this.dialogService = dialogService;
